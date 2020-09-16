@@ -1,7 +1,5 @@
 FROM php:7.3-apache
 
-MAINTAINER victor.yang@hellosanta.com.tw
-
 # install the PHP extensions we need
 RUN set -ex; \
 	\
@@ -11,9 +9,12 @@ RUN set -ex; \
 	apt-get install -y --no-install-recommends \
 	libjpeg-dev \
 	libpng-dev \
+	libfreetype6-dev \
+	libzip-dev \
+	zip \
 	; \
 	\
-	docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
+	docker-php-ext-configure gd --with-freetype --with-jpeg ; \
 	docker-php-ext-install gd mysqli opcache zip; \
 	\
 	# reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
@@ -46,9 +47,9 @@ RUN a2enmod rewrite expires
 
 # Install openssh && nano && supervisor && wp-cli
 RUN apt-get update && apt-get install -y openssh-server nano supervisor git && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \ 
-&& php wp-cli.phar --info \ 
-&& chmod +x wp-cli.phar \ 
-&& mv wp-cli.phar /usr/local/bin/wp
+	&& php wp-cli.phar --info \ 
+	&& chmod +x wp-cli.phar \ 
+	&& mv wp-cli.phar /usr/local/bin/wp
 
 
 # ADD Configuration to the Container
