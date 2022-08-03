@@ -1,6 +1,6 @@
 # PHP4Wordpress
 
-[![Build Status](https://drone-v2.hellosanta.tw/api/badges/docker/php4wordpress/status.svg)](https://drone-v2.hellosanta.tw/docker/php4wordpress)
+[![Build Status](https://drone.hellosanta.tw/api/badges/docker/php4wordpress/status.svg)](https://drone.hellosanta.tw/docker/php4wordpress)
 
 ## 簡介
 主要是根據php4drupal，概念製作一個可以給wordpress使用的php環境
