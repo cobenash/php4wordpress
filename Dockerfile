@@ -36,6 +36,7 @@ RUN set -eux; \
 		zip \
 		bcmath \
 		exif \
+		mysqli \
 	; \
 	\
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
