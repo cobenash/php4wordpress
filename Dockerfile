@@ -1,10 +1,12 @@
-FROM php:8.2-apache-buster
+FROM php:8.3-apache-bullseye
 
 # install the PHP extensions we need
 RUN set -eux; \
 	\
 	if command -v a2enmod; then \
 		a2enmod rewrite; \
+		a2enmod headers; \
+		a2enmod expires; \
 	fi; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
